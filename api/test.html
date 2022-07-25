@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/jquery.min.js"></script>
+    <title>Reast API</title>
+
+</head>
+
+<body>
+    
+    <div id="tblData">
+
+    </div>
+    <div id="header">
+
+    </div>
+    <script>
+          $.ajax({
+            url: "http://127.0.0.1/Electr-project/FlexStart/FlexStart/api/",
+            dataType: "json",
+            success: function(data) {
+                console.log(data);
+                var html = "";
+                for (var i = 0; i < data.length; i++) {
+                    html += "<div class='col-lg-4 col-md-6' data-aos='fade-up' data-aos-delay='200'><div class='service-box blue'>";
+                    html += "<i class='ri-discuss-line icon'></i>";
+                    html += "<h3>" + data[i].courses + "<h3>";
+                    html += "<p>" + data[i].description + "</p>";
+                    html += "<a href='#' class='read-more'><span>Read More</span> <i class='bi bi-arrow-right'></i></a></div></div>";
+                }
+                $("#tblData").html(html);
+            }
+        });
+
+        $.ajax({
+            url: "http://127.0.0.1/Electr-project/FlexStart/FlexStart/api/",
+            dataType: "json",
+            success: function(data) {
+                console.log(data);
+                var html = "";
+                    html += "<div class='container-fluid container-xl d-flex align-items-center justify-content-between'><a href='index.html' class='logo d-flex align-items-center'>";
+                    html += "<img src='../../assets/img/logo.png' alt=''><span>Electro-Tech</span></a>";
+                for (var i = 11; i < 16; i++) {
+                    html += "<nav id='navbar' class='navbar'><ul><li>";
+                    html += "<a class='nav-link scrollto ' href=" + data[i].hlink + ">" +data[i].ankar + "</a></li>";
+                    html += "</ul><i class='bi bi-list mobile-nav-toggle'></i></nav></div>";
+                }
+                $("#header").html(html);
+            }
+        });
+      </script>
+
+</body>
+
+</html>
